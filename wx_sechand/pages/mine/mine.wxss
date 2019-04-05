@@ -1,0 +1,144 @@
+/* pages/mine/mine.wxss */
+.row-one-box {
+  position:relative;
+  padding:29rpx 30rpx;
+  font-size:25rpx;
+  overflow:hidden;
+  border-bottom:1px solid #ececec;
+  background:#fff;
+
+}
+
+/* logo */
+.header-box {
+  overflow:hidden;
+  position: relative;
+}
+.header-box-image {
+  position: absolute;
+  width: 100%;
+  height: 350rpx;
+}
+.header-box-info {
+  position: relative;
+  height: 180rpx;
+  margin: 30rpx 0;
+  background: #fff;
+}
+.header-box-info-photo {
+  position: absolute;
+  width: 115rpx;
+  height: 115rpx;
+  border-radius: 100%;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  border: 2px solid #fff;
+  margin-left: 40rpx;
+}
+.header-box-info-name {
+  position: absolute;
+  top: 50rpx;
+  bottom: 0;
+  /* margin: auto 0; */
+  margin-left: 200rpx;
+  width:300rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  color: #000000;
+  font-size: 34rpx;
+}
+.header-box-info-username {
+  position:absolute;
+  top:100rpx;
+  bottom:0;
+  margin-left:200rpx;
+  width:300rpx;
+  height:30rpx;
+  line-height:30rpx;
+  color:#cecece;
+  font-size:24rpx;
+
+}
+
+.header-box .vip-member{
+  position: absolute;
+  top: 100rpx;
+  margin-left: 200rpx;
+  width:160rpx;
+  height:40rpx;
+  font-size: 28rpx;
+  border: 1rpx solid #ff6802;
+  color: #fff;
+  text-align: center;
+  background-color: #ff6802;
+  border-radius: 10rpx;
+}
+.header-box .outdate-time{
+  position: absolute;
+  top: 100rpx;
+  margin-left: 400rpx;
+  color: #cecece;
+  font-size: 28rpx;
+}
+/* 齿轮 */
+.cl {
+  position: absolute;
+  width: 10rpx;
+  height: 10rpx;
+  top: 0;
+  bottom: 0;
+  right: 80rpx;
+  margin: auto 0;
+}
+.cl-img-one {
+  width: 170rpx;
+  height: 170rpx;
+  position: absolute;
+  margin: -110rpx 0 0 -160rpx;
+}
+.cl-img-two {
+  width: 110rpx;
+  height: 110rpx;
+  position: absolute;
+  margin: 20rpx 0 0 -240rpx;
+}
+
+.section {
+  padding-bottom: 100rpx;
+}
+.modal{
+  position: fixed;
+  left:0;
+  top:0;
+  width:100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 99999999999999;
+}
+.modal-content{
+  position: absolute;
+  bottom: 0;
+  left:0;
+  box-sizing: border-box;
+  width:100%;
+  height: 400rpx;
+  padding: 40rpx;
+  background: #fff;
+}
+.content {
+    margin-left: 50rpx;
+    margin-bottom: 90rpx;
+}
+ 
+.content text {
+    display: block;
+    color: #9d9d9d;
+    margin-top: 40rpx;
+}
+ 
+.bottom {
+    border-radius: 80rpx;
+    margin: 70rpx 50rpx;
+    font-size: 35rpx;
+}

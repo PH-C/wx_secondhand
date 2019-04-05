@@ -1,0 +1,197 @@
+/* pages/confirmOrder/confirmOrder.wxss */
+
+  .header{
+    box-sizing: border-box;
+    line-height: 70rpx;
+    width: 100%;
+    padding: 20rpx;
+    font-size: 32rpx;
+    text-align: left;
+    border-bottom: 2rpx solid #e4e5e9;
+  }
+  .back{
+    font-size: 26rpx;
+    margin-right: 30rpx;
+  }
+  .userInfo{
+    text-align: left;
+    padding: 30rpx;
+    font-size: 26rpx;
+    border-bottom: 2rpx solid #e4e5e9;
+  }
+  .address{
+    margin-top: 30rpx;
+    font-size: 28rpx;
+    color: #d4d4d4;
+  }
+  .interview{
+    width: 100%;
+    height: 20rpx;
+    background: #f5f5f7;
+  }
+
+
+  .goodsRow{
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 30rpx;
+  }
+  .goodsRow image{
+    width: 140rpx;
+    height: 140rpx;
+    margin-right: 30rpx
+  }
+  .goodsName{
+    font-size: 30rpx;
+    text-align: left;
+    margin: 20rpx 0;
+  }
+  .size{
+    margin-right: 20rpx;
+  }
+  .goodsPrice{
+    /* float: right; */
+    color: red;
+    font-size: 38rpx;
+  }
+  .bottom{
+    position: fixed;
+    bottom: 0;
+    height: 200rpx;
+    line-height: 70rpx;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 30rpx;
+    font-size: 30rpx;
+    color: #F56C6C;
+    text-align: left;
+  }
+  .confirm{
+    float: right;
+   
+  }
+  .button{
+    width: 210rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    background: #04dfe1;
+    text-align: center;
+    font-size: 30rpx;
+    border-radius: 4px;
+    color: #fff;
+  }
+  .button-add{
+    display: inline-block;
+    width: 310rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    /* background: #04dfe1; */
+    text-align: center;
+    font-size: 30rpx;
+    border-radius: 4px;
+    /* color: #fff; */
+    border:1px solid #cecece;
+  }
+  .selAddress{
+    width: 100%;
+  	height: 134rpx;
+    line-height: 134rpx;
+  	margin-right: 30rpx;
+  	margin-bottom: 30rpx;
+  	background: #fff;
+    padding: 16rpx;
+  	border-radius: 4px;
+  	border: 0;
+    text-align: center;
+  }
+
+  .sizeBox{
+  	position: fixed;
+  	z-index: 4;
+  	bottom: 0;
+  	left: 0;
+  	box-sizing: border-box;
+  	width: 100%;
+  	text-align: left;
+  	font-size: 30rpx;
+  	background: #fff;
+  }
+  .sizeBox image{
+  	width: 210rpx;
+  }
+  .sizeBoxPriceBox{
+  	display: inline-block;
+  }
+  .sizeBoxHeader{
+  	position: relative;
+  	box-sizing: border-box;
+  	width: 100%;
+  	display: flex;
+  	align-items: center;
+  	line-height: 60rpx;
+  	padding: 30rpx;
+  }
+  .close{
+  	position: absolute;
+  	top: 30rpx;
+  	right: 30rpx;
+  	font-size: 34rpx;
+  }
+  .allAddress{
+  	box-sizing: border-box;
+  	background: #f5f4f9;
+  	width: 100%;
+  	padding: 30rpx;
+  	display: flex;
+  	flex-direction: row;
+  	flex-wrap: wrap;
+  }
+  .allAddress .addressItem{
+  	width: 100%;
+  	height: 134rpx;
+  	margin-right: 30rpx;
+  	margin-bottom: 30rpx;
+  	background: #fff;
+    padding: 16rpx;
+  	border-radius: 4px;
+  	border: 0;
+  }
+  .allAddress .address-confirm{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  	height: 134rpx;
+    text-align: center;
+  }
+  .eachAddress:nth-child(4n){
+  	margin-right: 0;
+  }
+  .blackBg{
+  	position: fixed;
+  	z-index: 3;
+  	bottom: 0;
+  	left: 0;
+  	width: 100%;
+  	height: 100%;
+  	background: #000000;
+  	opacity: .4;
+  }
+ 
+  .selected{
+  	border: 1px solid #cecece !important;
+  }
+  .buyBtn{
+  	width: 100%;
+  	padding: 16rpx 30rpx;
+  }
+  .buyBtn button{
+  	width: 100%;
+  	height: 70rpx;
+  	background: #00c2c2;
+  	color: #fff;
+  	border: none;
+  	outline: none;
+  	border-radius: 4px;
+  }

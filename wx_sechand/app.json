@@ -1,0 +1,54 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/login/login",
+    "pages/register/register",
+    "pages/cart/cart",
+    "pages/mine/mine",
+    "pages/auth/auth",
+    "pages/search/search",
+    "pages/productDetail/productDetail",
+    "pages/publish/publish",
+    "pages/myOrder/myOrder",
+    "pages/myFavor/myFavor",
+    "pages/myWallet/myWallet",
+    "pages/confirmOrder/confirmOrder",
+    "pages/myAddress/myAddress",
+    "pages/addAddress/addAddress",
+    "pages/mySell/mySell",
+    "pages/deliverProduct/deliverProduct"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#000000",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "image/zy.png",
+        "selectedIconPath": "image/zy_y.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/publish/publish",
+        "iconPath": "image/fabu.png",
+        "selectedIconPath": "image/fabu_y.png",
+        "text": "发布闲置"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "iconPath": "image/mine.png",
+        "selectedIconPath": "image/mine_y.png",
+        "text": "我的"
+      }
+    ]
+  }
+}

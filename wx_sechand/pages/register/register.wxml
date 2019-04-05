@@ -1,0 +1,20 @@
+<!--pages/register/register.wxml-->
+<view class="form-common">
+    <form bindsubmit="register">
+        <view class="formc-cnt">
+            <text>账号：</text>
+            <input auto-focus bindinput="textinput" data-type="1" placeholder="手机/邮箱" type="text"/>
+        </view>
+        <view class="formc-cnt">
+            <text>密码：</text>
+            <input auto-focus bindinput="textinput" data-type="2" type="text" password="true"/>
+        </view>
+        <view class="link">
+          <navigator url="/pages/login/login">已有账号？去登录</navigator>
+          
+        </view>
+        <view>
+            <button type="primary" hover-class="btnhover" formType="submit">注册</button>
+        </view>
+    </form>
+</view>

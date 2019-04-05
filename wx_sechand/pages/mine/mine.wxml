@@ -1,0 +1,53 @@
+
+<view  class="section animated fadeIn">
+  <!-- header photo -->
+  <view class="header-box">
+    <view class="header-box-info">
+      <image wx:if="{{userInfo && userInfo.avatarUrl}}" class="header-box-info-photo" src="{{userInfo.avatarUrl}}"></image> 
+      <text class="header-box-info-name">{{userInfo.nickName}}</text>
+      <text class="header-box-info-username">用户名:{{userInfo.username}}</text>
+    </view>
+  </view>
+
+  <view class="row-one-box" catchtap="goMyOrder">
+    <text class="row-one-box-left left">我的订单</text>
+    <text class="row-one-box-right-icon right" style="color: red;"></text>
+  </view>
+   <view class="row-one-box" catchtap="goMyAddress">
+    <text class="row-one-box-left left">我的地址</text>
+    <text class="row-one-box-right-icon right" style="color: red;"></text>
+  </view>
+  
+  <view class="row-one-box" catchtap="goSz">
+    <text class="row-one-box-left left">我的收藏</text>
+    <text class="row-one-box-right-icon right" style="color: red;"></text>
+  </view>
+ 
+  <view class="row-one-box" catchtap="goMySells">
+    <text class="row-one-box-left left">我发布的闲置</text>
+    <text class="row-one-box-right-icon right" style="color: red;"></text>
+  </view>
+  
+  <view class="row-one-box" catchtap="goPayMoney">
+    <text class="row-one-box-left left">钱包充值</text>
+    <text class="row-one-box-right-icon right" style="color: red;"></text>
+  </view>
+
+  <view class="modal" wx:if="{{modalState}}">
+    <view wx:if="{{canIUse}}" class="modal-content">
+    
+        <view class='content'>
+            <view>申请获取以下权限</view>
+            <text>获得你的公开信息(昵称，头像等)</text>
+        </view>
+    
+        <button class='bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
+           同意
+        </button>
+    </view>
+    
+    <view wx:else>请升级微信版本</view>
+ 
+  </view>
+ 
+</view>

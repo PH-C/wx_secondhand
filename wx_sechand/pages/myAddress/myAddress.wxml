@@ -1,0 +1,33 @@
+<!--pages/myAddress/myAddress.wxml-->
+   <view>
+      <view class="header">
+        我的地址
+      </view>
+      <view  class="sizeBox">
+        <view class="sizeBoxHeader">
+          <view class="iconfont iconcha close" bindtap="delAddress">×</view>
+          <view class="sizeBoxPriceBox">
+            选择地址
+          </view>
+        </view>
+        <view class="allAddress ">
+         <view class="address-confirm">
+            <view class="button" bindtap='addAddress'>
+              添加地址
+            </view>
+          </view>
+          <view
+              wx:for="{{address}}"
+              wx:key="{{index}}" 
+              data-index='{{index}}'
+              class="{{showIndex==index?'selected addressItem':'addressItem'}}"
+              bindtap="selectAddress">
+                <view>收货人: {{item.realName}} <text style="float: right;margin-right: .2rem">{{item.mobile}}</text></view>
+                <view class="address">{{item.address}}</view>
+          </view>
+         
+         
+        </view>
+      </view>
+    </view>
+

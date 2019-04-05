@@ -1,0 +1,25 @@
+<!--pages/publish/publish.wxml-->
+<view class="publish">
+ <form bindsubmit="formSubmit" >
+  
+      <view class="section">
+        <label>姓名<text class="redC">*</text></label>
+        <input name="realName" type="text" placeholder="请输入姓名" focus="{{true}}"  />
+      </view>
+
+      <view class="section">
+        <label>联系方式<text class="redC">*</text></label>
+        <input name="mobile" type="number" placeholder="请输入联系方式" />
+      </view>
+      
+      <view class="select-house">地址</view>
+      <view class="section">
+        <textarea  name="address" auto-height placeholder="请输入" style="min-height: 150rpx;" />
+      </view>
+
+       <view class="btn-area">
+        <button formType="submit" type="primary">发布</button>
+      </view>
+  </form>
+</view>
+

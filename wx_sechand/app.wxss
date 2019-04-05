@@ -1,0 +1,39 @@
+/**app.wxss**/
+/* .container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+}  */
+page {
+  display: block;
+  min-height: 100%;
+  background: #f9f9f9;
+  font-size:30rpx;
+  color: #333;
+}
+.square{
+  display: inline-block;
+  width:10rpx;
+  height: 40rpx;
+  /* 1296db */
+  background-color: #1296db;
+  border-radius: 3px;
+  margin-right: 10rpx;
+}
+
+
+.load-more{
+  color: #cdcdcd;
+  text-align: center;
+  margin: 15rpx 0;
+  font-size: 28rpx;
+}
+.is-loading{
+  width: 25rpx;
+  height: 25rpx;
+  margin-right: 10rpx;
+}

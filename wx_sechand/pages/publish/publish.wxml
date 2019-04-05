@@ -1,0 +1,65 @@
+<!--pages/publish/publish.wxml-->
+<view class="publish">
+ <form bindsubmit="formSubmit" >
+      <view class="section">
+        <label>闲置类型<text class="redC">*</text></label>
+        <picker  name="type" bindchange="bindCityPickerChange" value="{{typeIndex}}" range="{{typeArray}}">
+          <view>
+            <text>{{typeArray[typeIndex]}}</text>
+          </view>
+          <image src="../../image/xiala.svg"></image>
+        </picker>
+      </view>
+      <view class="section">
+        <label>闲置名称<text class="redC">*</text></label>
+        <input name="name" type="text" placeholder="请输入名称" focus="{{true}}"  />
+      </view>
+
+      <view class="section">
+        <label>价格</label>
+        <input name="price" type="digit" placeholder="例如：200"  />
+      </view>
+      <view class="section">
+        <label>联系方式<text class="redC">*</text></label>
+        <input name="mobile" type="number" placeholder="请输入邮费" />
+      </view>
+      <view class="section">
+        <label>交易方式<text class="redC">*</text></label>
+        <picker  name="transactionMode" bindchange="bindTransactionChange" value="{{transactionIndex}}" range="{{transactionArray}}">
+          <view>
+            <text>{{transactionArray[transactionIndex]}}</text>
+          </view>
+          <image src="../../image/xiala.svg"></image>
+        </picker>
+      </view>
+
+      <view class="section" wx:if="{{postageShow}}">
+        <label>邮费<text class="redC">*</text></label>
+        <input name="postage" type="number" placeholder="请输入邮费" />
+      </view>
+      
+      
+
+      <view class="select-house">商品详情</view>
+      <view class="section">
+        <textarea  name="describe" auto-height placeholder="请输入" style="min-height: 150rpx;" />
+      </view>
+
+      <view class="select-house">上传商品图片（最多四张）<text class="redC">*</text></view>
+       <view class="upload-box">
+        <!-- 上传按钮 -->
+        <view class="upload-box-view" catchtap="chooseImg">
+          <view class="upload-box-btn">
+            <image src="../../image/add_two.png"></image>
+          </view>
+        </view>
+        <view wx:for="{{updateImg}}" wx:key="{{index}}" class="upload-box-view">
+          <image class="upload-box-img" src="{{ item }}" data-img="{{ item }}" catchtap="preview"></image>
+          <image class="upload-delete" src="../../image/delete.png" data-index="{{ index }}" catchtap="deleteimg"></image>
+        </view>
+       </view>
+       <view class="btn-area">
+        <button formType="submit" type="primary">发布</button>
+      </view>
+  </form>
+</view>

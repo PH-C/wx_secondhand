@@ -1,0 +1,23 @@
+<!--pages/deliverProduct/deliverProduct.wxml-->
+<view>
+  <!-- <form bindsubmit="formSubmit" > -->
+   <view class="section__title">发货(请选择快递公司并输入物流单号)</view>
+   <view class="section">   
+        <picker  name="type" bindchange="bindCityPickerChange" value="{{typeIndex}}" range="{{typeArray}}">
+          <view>
+            <text>{{typeArray[typeIndex]}}</text>
+          </view>
+          <image src="../../image/xiala.svg"></image>
+        </picker>
+    </view>
+    <view class="section">   
+      <input  name="trackingNumber" bindinput="bindKeyInput" placeholder="请输入物流单号" value="{{inputValue}}" />
+      <button
+        type="primary"
+        bindtap="deliver"
+      >
+      发货
+      </button>
+    </view>
+  <!-- </form> -->
+</view>

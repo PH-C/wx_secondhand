@@ -1,0 +1,28 @@
+<!--pages/search/search.wxml-->
+<scroll-view scroll-y="{{true}}" class="search">
+  <view class='search-product'>
+    <icon type='search' size='16' class='search-icon'></icon>
+    <input class='search-input' confirm-type="search" placeholder='闲置搜索' bindconfirm='searchProduct' value="{{searchValue}}"></input>
+    <icon wx:if="{{searchValue}}" type='cancel' size='16' class='reset-icon' bindtap='resetSearch'></icon>
+  </view>
+
+  <view class="search-list">
+    <view class="search-item" wx:for="{{comProducts}}" wx:key="{{item.id}}" data-id='{{item.id}}' bindtap='goToDetail'>
+      <image class="pic" src="{{item.pic}}"></image>
+      <view class="bref-detail">
+        <text>{{item.name}}</text>
+        <text class="price">￥{{item.price}}</text>
+      </view>
+      
+      <!-- <view class="cart-btn">
+        <image src='../../image/cart.png'></image>
+      </view> -->
+    </view>
+
+   
+  </view>
+
+   <view class="load-more" bindtap="getMoreLists">
+    <image wx:if="{{isLoading}}" class="is-loading" src="../../image/loading.gif" />{{loadMore}}
+   </view>
+</scroll-view>

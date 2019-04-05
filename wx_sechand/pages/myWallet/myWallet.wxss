@@ -1,0 +1,19 @@
+/* pages/myWallet/myWallet.wxss */
+.section{
+  box-sizing: border-box;
+  padding: 40rpx;
+}
+.section__title{
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+}
+.bigfont{
+  font-size: 48rpx;
+  font-weight: bold;
+}
+input{
+  padding: 50rpx;
+  text-align: center;
+  font-weight: bold;
+}

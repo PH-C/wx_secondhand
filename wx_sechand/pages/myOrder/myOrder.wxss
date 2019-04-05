@@ -1,0 +1,76 @@
+/* pages/myOrder/myOrder.wxss */
+.tabs-item.selected {
+    color:rgba(171,149,109,.8);
+    border-bottom:2px solid rgba(171,149,109,.8);
+}
+.tabs-item {
+    width:33.3%;
+    color:#C7C7CB;
+    font-size:28rpx;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-bottom:1rpx solid #D0D0D7;
+}
+
+.goods-tab-nav{
+    display: inline-block;
+    width: 25%;
+    height: 90rpx;
+    line-height: 90rpx;
+    border-bottom: 1rpx solid #ededed;
+    box-sizing: border-box;
+    text-align: center;
+    color: #c7c7cb;
+}
+.goods-tab-nav.on{
+    color: #bcaa8a;
+    border-bottom: 5rpx solid #bcaa8a;
+}
+.goods-content{
+    padding: 40rpx;
+}
+
+  .goodsRow{
+   display: flex;
+   flex-direction: column;
+     border-bottom: 2rpx solid #e4e5e9;
+  }
+  .goodsItem{
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 30rpx;
+  
+  }
+  .goodsRow image{
+    width: 140rpx;
+    height: 140rpx;
+    margin-right: 30rpx
+  }
+  .goodsName{
+    width: 440rpx;
+    font-size: 30rpx;
+    text-align: left;
+    margin: 20rpx 0;
+  }
+  .size{
+    margin-right: 20rpx;
+  }
+  .goodsPrice{
+    /* float: right; */
+    color: red;
+    font-size: 38rpx;
+  }
+  .button{
+    width: 210rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    background: #04dfe1;
+    text-align: center;
+    font-size: 30rpx;
+    border-radius: 4px;
+    color: #fff;
+    margin:20rpx auto;
+  }

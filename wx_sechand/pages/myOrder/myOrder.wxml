@@ -1,0 +1,44 @@
+<!--pages/myOrder/myOrder.wxml-->
+<view>
+    <view class="goods-tab-box">
+        <view class="goods-tab-nav {{curIndex === 1 ?'on':''}}" bindtap="bindSelect" data-index="1">待发货</view>
+        <view class="goods-tab-nav {{curIndex === 2 ?'on':''}}" bindtap="bindSelect" data-index="2">已发货</view>
+        <view class="goods-tab-nav {{curIndex === 3 ?'on':''}}" bindtap="bindSelect" data-index="3">已完成</view>
+        <view class="goods-tab-nav {{curIndex === -1 ?'on':''}}" bindtap="bindSelect" data-index="-1">已取消</view>
+
+        <view class="goods-content">
+           
+            <view class="goodsRow" wx:for="{{orders}}" wx:key="item.id">
+              <view class="goodsItem"   data-id='{{item.product_id}}' bindtap='goToDetail'>
+                <image src="{{item.product.pic}}"></image>
+                <view>
+                  <view class="goodsName">{{item.product.name}}</view>
+                  <view style="font-size: 24rpx;text-align: left">
+                    <text class="goodsPrice">￥{{item.price}}</text>
+                    <text>【{{item.product.transactionMode}}</text>
+                    <text wx:if="{{item.product.transactionMode=='在线交易'}}">，邮费￥{{item.product.postage}}</text>
+                    <text>】</text>
+                  </view>
+                </view>             
+              </view>
+              <view style="font-size: 24rpx;text-align: left;color:#cecece">
+                <view>{{item.address}}</view>
+                <view style="color:red" wx:if="{{item.product.transactionMode=='在线交易'&&curIndex >1}}">物流：{{item.trackingCompany}}，{{item.trackingNumber}}</view> 
+              </view>
+              <view wx:if="{{curIndex === 1}}">
+                <view class="button" bindtap='changeOrderState'  data-id='{{item.id}}' data-state='-1'>
+                  取消订单
+                </view>
+              </view>
+              <view wx:if="{{curIndex === 2}}">
+                <view class="button" bindtap='changeOrderState'  data-id='{{item.id}}' data-state='3'>
+                  确认收货
+                </view>
+              </view>
+            </view>
+        </view>
+    </view>
+    <view class="load-more" bindtap="getMoreLists">
+      <image wx:if="{{isLoading}}" class="is-loading" src="../../image/loading.gif" />{{loadMore}}
+    </view>
+</view>

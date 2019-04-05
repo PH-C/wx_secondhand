@@ -1,0 +1,35 @@
+/* pages/deliverProduct/deliverProduct.wxss */
+.section{
+  box-sizing: border-box;
+  padding: 20rpx;
+}
+.section__title{
+ box-sizing: border-box;
+  line-height: 70rpx;
+  width: 100%;
+  padding: 20rpx;
+  font-size: 32rpx;
+  text-align: left;
+  border-bottom: 2rpx solid #e4e5e9;
+}
+.bigfont{
+  font-size: 48rpx;
+  font-weight: bold;
+}
+input{
+  padding: 50rpx;
+  text-align: center;
+  font-weight: bold;
+}
+.section picker{
+  position: relative;
+  /* width:750rpx; */
+  text-align: center;
+}
+.section picker image{
+  position: absolute;
+  top:0;
+  right:260rpx;
+  width: 40rpx; 
+  height: 40rpx;
+}

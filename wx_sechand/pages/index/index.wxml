@@ -1,0 +1,51 @@
+<!--index.wxml-->
+<view class="shouye">
+  <view class="" wx:if="{{comProducts.length>0}}">
+    <swiper indicator-dots="{{indicatorDots}}" circular="{{true}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="#ffffff">
+      <block wx:for="{{comProducts}}" wx:key="{{item.id}}">
+        <swiper-item>
+          <navigator url="/pages/productDetail/productDetail?id={{item.id}}">
+            <image src="{{item.pic}}" class="slide-image" />
+            <text style="position:absolute;left:50rpx;top:260rpx;color:#fff">{{item.name}}</text>
+          </navigator>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <view class='search-product'>
+    <icon type='search' size='16' class='search-icon'></icon>
+    <input class='search-input' placeholder='闲置搜索' bindconfirm='searchproduct' confirm-type="search"></input>
+  </view>
+  <!-- 最新闲置 -->
+  <view class='sec-list'>
+    <view class="sec-title">
+      <view class="square-title"><view class="square"></view><text>最新闲置</text></view>
+      <text class="more" bindtap="goToSearch">更多 ></text>
+    </view>
+    <view class="sec-cnt-list">
+      <view class="sec-item"  wx:for="{{recProducts}}" wx:key="{{item.id}}" data-id='{{item.id}}' bindtap='goToDetail'>
+        <image src="{{item.pic}}"></image>
+        <text class="price">￥{{item.price}}</text>
+      </view>
+     
+    </view>
+    
+  </view>
+
+  <!-- 推荐列表 -->
+  <view class='sec-list'>
+    <view class="sec-title">
+      <view class="square-title"><view class="square"></view><text>推荐闲置</text></view>
+      <text class="more" bindtap="goToRecommend">更多></text>
+    </view>
+    <view class="sec-cnt-list">
+      <view class="sec-item"  wx:for="{{comProducts}}" wx:key="{{item.id}}"  data-id='{{item.id}}' bindtap='goToDetail'>
+        <image src="{{item.pic}}"></image>
+        <text  class="price">￥{{item.price}}</text>
+      </view>
+    </view>
+    
+  </view>
+
+</view>

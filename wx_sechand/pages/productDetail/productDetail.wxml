@@ -1,0 +1,60 @@
+<!--pages/productDetail/productDetail.wxml-->
+<view class="product-detail">
+  <view class="product-title">
+    <view class="seller">
+      <image class="avatar" src="{{product.user.avatarUrl}}" ></image>
+      <text>{{product.user.username}}</text>
+    </view>
+    <view class="price">
+      <text>￥</text>
+      <text class="red-pri">{{product.price}}</text>
+      <text>【{{product.transactionMode}}</text>
+      <text wx:if="{{product.transactionMode=='在线交易'}}">，邮费￥{{product.postage}}</text>
+      <text>】</text>
+    </view>
+    <view class="mobile">联系方式：<text class="red-pri">{{product.mobile}}</text></view>
+    <view class="title">{{product.name}}</view>
+    <swiper class="swiper" indicator-dots="{{indicatorDots}}" circular="{{true}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="#ffffff">
+      <block wx:for="{{product.pic}}" wx:key="{{index}}">
+        <swiper-item>    
+            <image src="{{item}}" bindtap="imgYu"  class="slide-image"  data-src="{{item}}" data-list="{{product.pic}}"/>
+        </swiper-item>
+      </block>
+    </swiper>
+
+  </view>
+
+  <view class="product-desc">
+    <view class="desc-title">
+      <view class="square"></view>
+      商品详情
+    </view>
+    {{product.describe}}
+  </view>
+  <view class="btns">
+     
+      <view wx:if="{{!collect}}" class="icon-text"  catchtap="collect">
+            <image class="img-icon" src="../../image/index_xin.png"></image> 
+          <text>收藏</text>
+      </view>
+      <view wx:else class="icon-text" style="color: #f44236;"  catchtap="uncollect">
+          <image class="img-icon" src="../../image/index_xin_red.png"></image> 
+        <text>取消收藏</text>
+      </view>
+       <button class="icon-text" open-type="share" style="border:0" hover-class='none'>
+          <image class="img-icon"  src="../../image/share.png" />
+          <text>分享</text>
+      </button>
+      <view class="redfont button"  bindtap='makePhoneCall'>
+          <text>联系他</text>
+      </view>
+      <view wx:if="{{product.sellState==0}}" class="button"bindtap='gotobuy'>
+          立即购买
+      </view>
+      <view wx:else class="button" >
+          已经售出
+      </view>
+
+  </view>
+
+</view>

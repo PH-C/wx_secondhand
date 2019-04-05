@@ -1,0 +1,67 @@
+   <view>
+      <view class="header">
+        确认订单
+      </view>
+      <view class="userInfo" >
+        <view  wx:if="{{selAddress}}" bindtap="showAddressBox" >
+          {{selAddress.realName}}
+          <image src="../../image/jiantou.png" style="float: right;margin-top:20rpx; width: 36rpx;height:36rpx;"></image>
+          <text style="float: right;margin-right: 14rpx"> {{selAddress.mobile}}</text>
+          <view class="address">{{selAddress.address}}</view>
+        </view>
+        <view wx:else  class="selAddress">
+          <view class="button-add" bindtap='goAddAddress'>
+            暂无地址，点击添加
+          </view>
+        </view>
+      </view>
+      <view class="goodsRow">
+        <image src="{{cart.pic[0]}}"></image>
+        <view>
+          <view class="goodsName">{{cart.name}}</view>
+          <view style="font-size: 24rpx;text-align: left">
+            <text class="goodsPrice">￥{{cart.price}}</text>
+            <text>【{{cart.transactionMode}}</text>
+      <text wx:if="{{cart.transactionMode=='在线交易'}}">，邮费￥{{cart.postage}}</text>
+      <text>】</text>
+          </view>
+        </view>
+      </view>
+      <view class="bottom">
+        实付款:<text style="font-size: 28rpx;">￥{{cart.price}}</text>
+        <view class="button confirm" bindtap="confirmOrder">
+          提交订单
+        </view>
+      </view>
+
+      <view wx:if="{{showAddress}}" class="sizeBox">
+        <view class="sizeBoxHeader">
+          <view class="iconfont iconcha close" bindtap="closeAddressBox">×</view>
+          <view class="sizeBoxPriceBox">
+            选择地址
+          </view>
+        </view>
+        <view class="allAddress ">
+          <view class="selAddress">
+            <view class="button-add" bindtap='goAddAddress'>
+              添加地址
+            </view>
+          </view>
+          <view
+              wx:for="{{address}}"
+              wx:key="{{index}}" 
+              data-index='{{index}}'
+              class="{{showIndex==index?'selected addressItem':'addressItem'}}"
+              bindtap="selectAddress">
+                <view>收货人: {{item.realName}} <text style="float: right;margin-right: .2rem">{{item.mobile}}</text></view>
+                <view class="address">{{item.address}}</view>
+          </view>
+          <view class="address-confirm">
+            <view class="button" bindtap='selectAddressOK'>
+              确认选择
+            </view>
+          </view>
+         
+        </view>
+      </view>
+    </view>

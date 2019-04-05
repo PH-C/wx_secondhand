@@ -1,0 +1,32 @@
+/* pages/publish/publish.wxss */
+/* page/addHouse/addHouse.wxss */
+.publish .select-house{
+  padding: 20rpx 28rpx;
+  background-color: #dfe8ec;
+  font-size:28rpx;
+}
+.publish .select-other{
+ padding: 20rpx 28rpx;
+ font-size: 28rpx;
+}
+.publish .section{
+  display: flex;
+  justify-content: flex-start;
+  padding: 16rpx 28rpx;
+  font-size: 28rpx;
+}
+.publish .section label{
+  width:220rpx;
+  padding-right: 20rpx;
+  font-size:28rpx;
+  line-height: 46rpx;
+}
+
+.publish .btn-area{
+  padding: 10rpx 28rpx;
+}
+
+.publish .redC{
+  color: red;
+}
+

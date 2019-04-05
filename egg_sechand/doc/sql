@@ -1,0 +1,78 @@
+CREATE TABLE `egg_db`.`users` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(255) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  `create_at` DATETIME NULL,
+  `update_at` DATETIME NULL,
+  `authority_id` INT NOT NULL,
+  PRIMARY KEY (`id`, `authority_id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE);
+
+  CREATE TABLE `egg_db`.`authorities` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(30) NOT NULL,
+  `created_at` DATETIME NULL,
+  `updated_at` DATETIME NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE);
+
+alter table egg_db.users rename column create_at to created_at
+alter table egg_db.users rename column update_at to updated_at
+
+CREATE TABLE `egg_db`.`catalogs` (
+  `id` INT  NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(255) NULL,
+  `created_at` DATETIME NULL,
+  `update_at` DATETIME NULL,
+  `user_id` INT NOT NULL,
+  PRIMARY KEY (`id`, `user_id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
+  INDEX `user_id_idx` (`user_id` ASC) VISIBLE,
+  CONSTRAINT `user_id`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `egg_db`.`users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+
+   alter table `egg_db`.`users`
+   add constraint `authority_id` foreign key(`authority_id`) references `egg_db`.`authorities` (`id`)
+
+ CREATE TABLE `egg_db`.`comments` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `content` VARCHAR(255) NULL,
+  `created_at` DATETIME NULL,
+  `updated_at` DATETIME NULL,
+  `blog_id` INT NULL,
+  `user_id` INT NULL,
+  PRIMARY KEY (`id`));
+
+//应该是你那个外键索引名有重复了把FK_borrowlist改成FK_borrowlist1就行了吧。我也试过。
+ alter table `egg_db`.`comments`
+   add constraint `user_id1` foreign key(`user_id`) references `users` (`id`)
+
+
+   CREATE TABLE `egg_db`.`blogs` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(255) NULL,
+  `summary` VARCHAR(255) NULL,
+  `content` TEXT NULL,
+  `readSize` INT NULL,
+  `commentSize` INT NULL,
+  `tags` VARCHAR(100) NULL,
+  `created_at` DATETIME NULL,
+  `updated_at` DATETIME NULL,
+  `user_id` INT NULL,
+  `catalog_id` INT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE);
+
+   alter table `egg_db`.`comments`
+   add constraint `blog_id` foreign key(`blog_id`) references `blogs` (`id`)
+
+
+ alter table `egg_db`.`blogs`
+   add constraint `user_id2` foreign key(`user_id`) references `users` (`id`)
+
+    alter table `egg_db`.`blogs`
+   add constraint `catalog_id` foreign key(`catalog_id`) references `catalog` (`id`)

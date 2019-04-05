@@ -1,0 +1,14 @@
+<!--pages/myWallet/myWallet.wxml-->
+<view>
+  <view class="section">
+    <view class="section__title">余额</view>
+    <view class="section__title bigfont">￥{{userInfo.money}}</view>
+    <input bindinput="bindKeyInput" placeholder="请输入充值金额" value="{{inputValue}}" />
+    <button
+      type="primary"
+      bindtap="pay"
+    >
+    充值
+    </button>
+  </view>
+</view>
