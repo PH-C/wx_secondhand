@@ -2,7 +2,7 @@
 .product-detail{
   box-sizing: border-box;
   background-color: #fff;
-  margin-bottom: 60rpx;
+  margin-bottom: 120rpx;
   
 }
 .product-title{
@@ -28,6 +28,10 @@
   font-size: 20rpx;
 }
 .mobile{
+  display: flex;
+  align-items: center;
+  height: 60rpx;
+  line-height: 60rpx;
   font-size: 26rpx;
 }
 .red-pri{
@@ -135,9 +139,68 @@ button::after{
   border:0;
   display: none;
 }
-
-
 .redfont{
   /* color: red; */
   background: red;
+}
+.comment-box{
+  box-sizing: border-box;
+  padding: 20rpx 20rpx 20rpx 0rpx;
+  position: fixed;
+  bottom: 0;
+  left:0;
+  width:750rpx;
+  height: 140rpx;
+  line-height: 140rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+   border-top: 1px solid #cecece;
+}
+.comment-box input{
+  width:420rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  border-radius: 12rpx;
+  background-color: #f0e6e6;
+}
+.phone{
+  width:50rpx;
+  height: 50rpx;
+}
+.close{
+  display: inline-block;
+  width:80rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 48rpx;
+}
+.comments{
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 20rpx;
+}
+.comment-item{
+  display: flex;
+}
+.comment-item-left{
+  width: 50rpx;
+
+}
+.comment-item-left image{
+  box-sizing: border-box;
+  width:40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+.comment-item-right{
+  display: flex;
+  flex-direction: column;
+}
+.replies{
+  display: flex;
 }

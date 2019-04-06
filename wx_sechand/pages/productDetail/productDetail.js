@@ -10,7 +10,11 @@ Page({
    */
   data: {
     product:{},
+    showBox:false,
+    type:"留言",
+    commentid:'',
     collect:false,
+    commentValue:"",
     indicatorDots: true,
     autoplay: true,
     interval: 5000,
@@ -29,8 +33,14 @@ Page({
    */
   onLoad: function (options) {
     const _this = this;
+    this.initData();
+   
+  },
+
+  initData: function(){
+    const _this = this;
     let url = "";
-    url = app.globalData.hasLogin ? `/api/users/product/${options.id}` :`/api/product/${options.id}`;
+    url = app.globalData.hasLogin ? `/api/users/product/${options.id}` : `/api/product/${options.id}`;
     Api.WxGet(url, {}, function (res) {
       if (res.code === 0) {
         console.log(res)
@@ -44,8 +54,8 @@ Page({
         }
         _this.setData({
           loading: true,
-          collect:res.collect,
-          product: { ...product, pic: pics}
+          collect: res.collect,
+          product: { ...product, pic: pics }
         })
       } else {
         console.log(res.msg)
@@ -109,6 +119,83 @@ Page({
     let { mobile } = this.data.product;
     wx.makePhoneCall({
       phoneNumber: mobile
+    })
+  },
+
+  showBox: function(e){
+    const comment_id = e.currentTarget.dataset.commentid||"";
+    const type = e.currentTarget.dataset.type;
+
+    this.setData({
+      commentid: comment_id,
+      type: type,
+      showBox:true
+    })
+  },
+
+  closeBox: function () {
+    this.setData({
+      showBox: false
+    })
+  },
+
+  bindKeyInput(e) {
+    this.setData({
+      commentValue: e.detail.value
+    })
+  },
+
+  createContent: function(){
+    const { type } = this.data;
+    if (type==="留言"){
+      this.makeComment()
+    } else if (type === "回复"){
+      this.makeReply()
+    }
+
+  },
+
+  makeComment: function(){
+    const _this = this;
+    const { product, commentValue } = this.data;
+    Api.WxPost("/api/users/comment",{
+      product_id: product.id,
+      content: commentValue
+    },function(res){
+      if(res.code===0){
+        wx.showToast({
+          title: '留言成功！',
+        })
+        _this.initData()
+        _this.commentValue = ""
+      }else {
+        wx.showToast({
+          title: res.msg,
+        })
+      }
+
+    })
+  },
+
+  makeReply: function(e){
+    const _this = this;
+    const { commentid, commentValue } = this.data;
+    Api.WxPost("/api/users/comment/reply", {
+      comment_id: commentid,
+      content: commentValue
+    }, function (res) {
+      if (res.code === 0) {
+        wx.showToast({
+          title: '回复成功！',
+        })
+        _this.initData()
+        _this.commentValue = ""
+      } else {
+        wx.showToast({
+          title: res.msg,
+        })
+      }
+
     })
   },
 

@@ -7,7 +7,7 @@ module.exports = app => {
     DATE,
   } = app.Sequelize;
 
-  const Comment = app.model.define('comment', {
+  const CommentReply = app.model.define('commentreply', {
     id: {
       type: INTEGER,
       primaryKey: true,
@@ -20,13 +20,10 @@ module.exports = app => {
     updated_at: DATE,
   });
 
-  Comment.associate = function() {
-    app.model.Comment.belongsTo(app.model.Product);
-    app.model.Comment.belongsTo(app.model.User);
-    app.model.Comment.hasMany(app.model.CommentReply, {
-      as: 'replies',
-    });
+  CommentReply.associate = function() {
+    app.model.CommentReply.belongsTo(app.model.Comment);
+    app.model.CommentReply.belongsTo(app.model.User);
   };
 
-  return Comment;
+  return CommentReply;
 };

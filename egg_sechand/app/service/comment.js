@@ -49,6 +49,49 @@ class CommentService extends Service {
     }
   }
 
+  async commentReplyCreate({
+    comment_id,
+    content,
+  }) {
+    const {
+      ctx,
+    } = this;
+    const id = ctx.state.user.data.id
+
+    try {
+      if (!content || !comment_id) {
+        ctx.status = 400;
+        return Object.assign(ERROR, {
+          msg: `expected an object with content,comment_id but got: ${JSON.stringify({
+            comment_id,
+            content,
+          })}`,
+        });
+      }
+    
+      const comment = await ctx.model.Comment.findById(comment_id);
+      if(!comment){
+        return {...ERROR,msg:"未找到评论"}
+      }
+
+      const res = await ctx.model.CommentReply.create({
+        user_id:id,
+        comment_id,
+        content,
+      });
+      ctx.status = 201;
+
+     
+      return Object.assign(SUCCESS, {
+        data: res,
+      });
+
+    } catch (error) {
+      ctx.status = 500;
+      throw (error);
+    }
+  }
+
   async del({
     id,
   }) {

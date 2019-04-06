@@ -164,10 +164,27 @@ class ProductService extends Service {
     const user = ctx.state.user
 
     const Product = await this.ctx.model.Product.findById(id, {
-      include:{
+      include:[{
         model: ctx.model.User,
-        as:"user"
-      }
+        as:"user",
+        attributes: [ 'id', 'username','avatarUrl' ],
+      },{
+        model: ctx.model.Comment,
+        as:"comments",
+        include:[{
+          model:ctx.model.CommentReply,
+          as:"replies",
+          include:{
+            model: ctx.model.User,
+            as:"user",
+            attributes: [ 'id', 'username','avatarUrl' ],
+          }
+        },{
+          model: ctx.model.User,
+          as:"user",
+          attributes: [ 'id', 'username','avatarUrl' ],
+        }]
+      }]
     });
 
     console.log("product", Product)
@@ -207,11 +224,27 @@ class ProductService extends Service {
     } = this;
 
     const Product = await this.ctx.model.Product.findById(id, {
-      include:{
+      include:[{
         model: ctx.model.User,
         as:"user",
         attributes: [ 'id', 'username','avatarUrl' ],
-      }
+      },{
+        model: ctx.model.Comment,
+        as:"comments",
+        include:[{
+          model:ctx.model.CommentReply,
+          as:"replies",
+          include:{
+            model: ctx.model.User,
+            as:"user",
+            attributes: [ 'id', 'username','avatarUrl' ],
+          }
+        },{
+          model: ctx.model.User,
+          as:"user",
+          attributes: [ 'id', 'username','avatarUrl' ],
+        }]
+      }]
     });
 
     console.log("product", Product)

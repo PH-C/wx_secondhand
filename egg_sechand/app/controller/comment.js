@@ -11,6 +11,14 @@ class CommentController extends Controller {
     ctx.body = await ctx.service.comment.create(ctx.request.body);
   }
 
+  async commentReplyCreate() {
+    const {
+      ctx,
+    } = this;
+   
+    ctx.body = await ctx.service.comment.commentReplyCreate(ctx.request.body);
+  }
+
   async destroy() {
     const {
       ctx,

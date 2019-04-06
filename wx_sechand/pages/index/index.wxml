@@ -1,8 +1,8 @@
 <!--index.wxml-->
 <view class="shouye">
-  <view class="" wx:if="{{comProducts.length>0}}">
+  <view class="" wx:if="{{hotProducts.length>0}}">
     <swiper indicator-dots="{{indicatorDots}}" circular="{{true}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="#ffffff">
-      <block wx:for="{{comProducts}}" wx:key="{{item.id}}">
+      <block wx:for="{{hotProducts}}" wx:key="{{item.id}}">
         <swiper-item>
           <navigator url="/pages/productDetail/productDetail?id={{item.id}}">
             <image src="{{item.pic}}" class="slide-image" />

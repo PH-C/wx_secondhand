@@ -8,9 +8,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    curClass: '',
     searchValue:'',
     isRecommend:"",
     comProducts:[],
+    hotDiscussClass: ['服饰', '数码', '手机', '书籍', '食品', '生活用品', '其他'],
     page: 1,
     pageSize:7,
     totalPages: 0,//总页数
@@ -67,7 +69,7 @@ Page({
 
   getSearchResult: function () {
     const _this = this;
-    const { searchValue, comProducts, isRecommend,page, pageSize} = this.data;
+    const { searchValue, comProducts, curClass, isRecommend,page, pageSize} = this.data;
     let data = {
       page,
       pageSize, 
@@ -77,6 +79,9 @@ Page({
     }
     if (isRecommend){
       data.isRecommend = isRecommend
+    }
+    if (curClass){
+      data.type = curClass
     }
    
     Api.WxGet("/api/product", data, function (res) {
@@ -98,6 +103,19 @@ Page({
         console.log(res.msg)
       }
     })
+  },
+
+  bindClickClass: function (e) {
+    console.log("e", e);
+    this.setData({
+      curClass: e.target.dataset.value,
+      comProducts: [],
+      page: 1,
+      pageSize: 7,
+      totalPages: 0,//总页数
+      loadMore: '加载更多',
+    })
+    this.getSearchResult()
   },
 
   /**

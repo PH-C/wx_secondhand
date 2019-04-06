@@ -12,7 +12,9 @@
       <text wx:if="{{product.transactionMode=='在线交易'}}">，邮费￥{{product.postage}}</text>
       <text>】</text>
     </view>
-    <view class="mobile">联系方式：<text class="red-pri">{{product.mobile}}</text></view>
+    <view class="mobile">联系方式：<text class="red-pri" bindtap='makePhoneCall'>{{product.mobile}}</text>
+      <image class="phone" src="../../image/phone.png" bindtap='makePhoneCall'/>
+    </view>
     <view class="title">{{product.name}}</view>
     <swiper class="swiper" indicator-dots="{{indicatorDots}}" circular="{{true}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-active-color="#ffffff">
       <block wx:for="{{product.pic}}" wx:key="{{index}}">
@@ -31,6 +33,40 @@
     </view>
     {{product.describe}}
   </view>
+  <view class="product-desc">
+    <view class="desc-title">
+      <view class="square"></view>
+      留言
+    </view>
+    <view class="comments" wx:if="{{product.comments.length}}">
+      <view class="comment-item" wx:for="{{product.comments}}" wx:key="{{commentitem.id}}" wx:for-item ="commentitem">
+        <view class="comment-item-left">
+           <image class="avatar" src="{{commentitem.user.avatarUrl}}" ></image>
+        </view>
+        <view class="comment-item-right">
+          <text>{{commentitem.user.username}}</text>
+          <text data-commentid='{{commentitem.id}}' data-type='回复' bindtap="showBox">{{commentitem.content}}</text>
+          <view class="replies" wx:for="{{commentitem.replies}}" wx:for-item ="replyitem">
+              
+              <view class="comment-item-left">
+                <image class="avatar" src="{{replyitem.user.avatarUrl}}" ></image>
+              </view>
+              <view class="comment-item-right">
+                <text>{{replyitem.user.username}}</text>
+                <text>回复：{{replyitem.content}}</text>
+              </view>
+
+          </view>
+           
+        </view>
+      
+      </view>
+    
+    </view>
+
+    <view class="comments" wx:else>暂无评论</view>
+  </view>
+
   <view class="btns">
      
       <view wx:if="{{!collect}}" class="icon-text"  catchtap="collect">
@@ -45,16 +81,24 @@
           <image class="img-icon"  src="../../image/share.png" />
           <text>分享</text>
       </button>
-      <view class="redfont button"  bindtap='makePhoneCall'>
-          <text>联系他</text>
+      <view class="redfont button" data-type='留言'  bindtap='showBox'>
+          <text>留言</text>
       </view>
-      <view wx:if="{{product.sellState==0}}" class="button"bindtap='gotobuy'>
+      <view wx:if="{{product.sellState==0}}" class="button" bindtap='gotobuy'>
           立即购买
       </view>
       <view wx:else class="button" >
           已经售出
       </view>
 
+  </view>
+
+  <view class="comment-box" wx:if="{{showBox}}">
+    <view class="close" bindtap='closeBox'>×</view>
+    <input placeholder="看对眼就留言，问问更多细节" value="{{commentValue}}" bindinput="bindKeyInput"  auto-focus />
+    <view class="button"  bindtap='createContent'  >
+        发送
+    </view>
   </view>
 
 </view>

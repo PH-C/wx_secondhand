@@ -1,4 +1,10 @@
 /* pages/search/search.wxss */
+.search{
+  width:100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding-top: 80rpx;
+}
 .search-product {
   display: flex;
   padding: 20rpx 30rpx;
@@ -65,4 +71,32 @@
 .cart-btn image{
   width:80rpx;
   height: 80rpx;
+}
+
+.hot-class{
+  box-sizing: border-box;
+  position: fixed;
+  left:0;
+  top:0;
+  padding:0 20rpx;
+  width:750rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size:28rpx;
+  background-color:#fff;
+  border-bottom: solid 1px #efefef;
+  border-top: solid 1px #efefef;
+  z-index: 999999;
+  overflow-x: scroll;
+  overflow-y:hidden; 
+  margin-bottom: 80rpx;
+}
+
+
+.hot-class .item{
+  padding-right: 20rpx;
+}
+.hot-class .selected-item{
+  padding-right: 20rpx;
+  font-weight: bold;
 }

@@ -14,6 +14,7 @@ Page({
     hasUserInfo: false,
     recProducts:[],
     comProducts:[],
+    hotProducts:[],
     indicatorDots: true,
     autoplay: true,
     interval: 5000,
@@ -54,6 +55,7 @@ Page({
     const _this = this;
     this.getRecently();
     this.getRecommend();
+    this.getHots();
   },
 
   getRecently: function(){
@@ -90,6 +92,27 @@ Page({
         _this.setData({
           loading: true,
           comProducts: comProducts
+        })
+      } else {
+        console.log(res.msg)
+      }
+    })
+  },
+
+  getHots: function () {
+    const _this = this;
+    Api.WxGet("/api/product", { pageSize: 4, isHot: 1 }, function (res) {
+      if (res.code === 0) {
+        console.log(res)
+        let comProducts = res.data.rows;
+        for (var i = 0; i < comProducts.length; i++) {
+          let item = comProducts[i]
+          item.name = item.name.slice(0, 28) + "..."
+          item.pic = constant.HOST + "/public" + item.pic.split(',')[0]
+        }
+        _this.setData({
+          loading: true,
+          hotProducts: comProducts
         })
       } else {
         console.log(res.msg)
