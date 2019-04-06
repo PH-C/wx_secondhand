@@ -295,6 +295,10 @@ class UserOrderService extends Service {
     updates,
   }) {
 
+    const {
+      ctx,
+    } = this;
+
     const userid = ctx.state.user.data.id//当前登录用户即卖家id
     
     
