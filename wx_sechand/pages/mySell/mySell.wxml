@@ -9,8 +9,9 @@
         <view class="goods-tab-nav {{curIndex === -1 ?'on':''}}" bindtap="bindSelect" data-index="-1">已取消</view>
 
         <view class="goods-content">
-           <view wx:if="{{curIndex===0}}" >
- <view class="goodsRow" wx:for="{{orders}}" wx:key="item.id" >
+      
+<view wx:if="{{curIndex===0}}" >
+            <view class="goodsRow" wx:for="{{orders}}" wx:key="item.id" >
               <view class="goodsItem" data-id='{{item.id}}' bindtap='goToDetail' >
                 <image src="{{item.pic}}"></image>
                 <view>
@@ -31,7 +32,6 @@
               </view>
             </view>
            </view>
-
            <view wx:else>
               <view   class="goodsRow"  wx:for="{{orders}}" wx:key="item.id" >
               <view class="goodsItem" data-id='{{item.product_id}}' bindtap='goToDetail'>

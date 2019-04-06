@@ -86,6 +86,12 @@ Page({
     })
   },
 
+  goSz: function(){
+    wx.navigateTo({
+      url: '/pages/myFavor/myFavor',
+    })
+  },
+
   goMyOrder: function(){
     wx.navigateTo({
       url: '/pages/myOrder/myOrder',

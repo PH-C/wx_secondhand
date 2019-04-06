@@ -22,14 +22,26 @@ Page({
   searchProduct(e) {
     console.log("e.detail.value", e.detail.value)
     this.setData({
-      searchValue: e.detail.value
+      comProducts: [],
+      searchValue: e.detail.value,
+      page: 1,
+      pageSize: 7,
+      totalPages: 0,//总页数
+      loadMore: '加载更多',
+      isLoading: false,
     })
     this.getSearchResult()
   },
 
   resetSearch(e){
     this.setData({
-      searchValue: ""
+      comProducts: [],
+      searchValue: "",
+      page: 1,
+      pageSize: 7,
+      totalPages: 0,//总页数
+      loadMore: '加载更多',
+      isLoading: false,
     })
     this.getSearchResult()
   },

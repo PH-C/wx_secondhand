@@ -294,6 +294,9 @@ class UserOrderService extends Service {
     id,
     updates,
   }) {
+
+    const userid = ctx.state.user.data.id//当前登录用户即卖家id
+    
     
     const userOrder = await this.ctx.model.UserOrder.findById(id);
 
@@ -306,6 +309,14 @@ class UserOrderService extends Service {
     const orderState = Number(updates.orderState);
     if(orderState===-1){
       product.update({sellState:0})
+      //买家取消订单，增加买家钱包余额
+      const user  = await this.ctx.model.User.findById(userid)
+      user.update({money:user.money+userOrder.price})
+    }else if(orderState===3){
+      //买家确认收货增加卖家收益
+      const user  = await this.ctx.model.User.findById(product.user_id)
+      product.update({sellState:updates.orderState})
+      user.update({money:user.money+userOrder.price})
     } else {
       product.update({sellState:updates.orderState})
     }

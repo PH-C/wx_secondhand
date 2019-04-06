@@ -1,2 +1,23 @@
 <!--pages/myFavor/myFavor.wxml-->
-<text>pages/myFavor/myFavor.wxml</text>
+<scroll-view scroll-y="{{true}}" class="search">
+
+  <view class="search-list">
+    <view class="search-item" wx:for="{{comProducts}}" wx:key="{{item.id}}" data-id='{{item.product.id}}' bindtap='goToDetail'>
+      <image class="pic" src="{{item.product.pic}}"></image>
+      <view class="bref-detail">
+        <text>{{item.product.name}}</text>
+        <text class="price">￥{{item.product.price}}</text>
+      </view>
+      
+      <!-- <view class="cart-btn">
+        <image src='../../image/cart.png'></image>
+      </view> -->
+    </view>
+
+   
+  </view>
+
+   <view class="load-more" bindtap="getMoreLists">
+    <image wx:if="{{isLoading}}" class="is-loading" src="../../image/loading.gif" />{{loadMore}}
+   </view>
+</scroll-view>
