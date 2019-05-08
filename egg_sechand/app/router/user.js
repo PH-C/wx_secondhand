@@ -13,6 +13,8 @@ module.exports = app => {
  
   app.post('/api/users/adminlogin','user.adminLogin')
   app.get('/api/users/current',app.jwt,'user.current')
+  app.get('/api/users', app.jwt, 'user.list')
+  app.get('/api/authority', app.jwt, 'user.authoritylist')
   app.get('/api/users/:id', 'user.find');
  
   app.get('/api/users/:id/edit', 'user.find');

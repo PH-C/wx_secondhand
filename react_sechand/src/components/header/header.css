@@ -1,0 +1,22 @@
+.header{
+  position: relative;
+  box-sizing: border-box;
+  height: 120px;
+  line-height: 120px;
+  padding:10px 20px;
+  background-color: #000c17;
+  color:white;
+}
+.header h1{
+  color:white;
+}
+.header .person{
+  position: absolute;
+  top:0px;
+  right:100px;
+  text-align: center;
+  height: 120px;
+  line-height: 120px;
+  font-size: 28px;
+
+}

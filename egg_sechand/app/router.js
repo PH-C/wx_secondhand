@@ -5,7 +5,7 @@
  */
 module.exports = app => {
   require('./router/home')(app);
-  require('./router/activity')(app);
+  require('./router/notice')(app);
   require('./router/product')(app);
   require('./router/address')(app);
   require('./router/userOrder')(app);

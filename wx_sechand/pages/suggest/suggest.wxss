@@ -1,0 +1,7 @@
+/* pages/suggest/suggest.wxss */
+.suggest .title{
+  height: 80rpx;
+  line-height: 80rpx;
+  font-weight: bold;
+  text-align: center;
+}

@@ -85,7 +85,7 @@
   font-size:28rpx;
   background-color:#fff;
   border-bottom: solid 1px #efefef;
-  border-top: solid 1px #efefef;
+  /* border-top: solid 1px #efefef; */
   z-index: 999999;
   overflow-x: scroll;
   overflow-y:hidden; 

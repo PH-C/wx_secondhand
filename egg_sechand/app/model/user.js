@@ -39,6 +39,10 @@ module.exports = app => {
     },
     created_at: DATE,
     updated_at: DATE,
+    delete:{
+      type: INTEGER,
+      defaultValue: 0
+    }
   });
 
   User.associate = function() {

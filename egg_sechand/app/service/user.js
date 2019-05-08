@@ -28,7 +28,7 @@ class UserService extends Service {
         },
       });
       if (!userDB) {
-        const res = await this.ctx.model.User.create({...user, "authority_id": 1});
+        const res = await this.ctx.model.User.create({ ...user, "authority_id": 1 });
         ctx.status = 201;
         return Object.assign(SUCCESS, {
           data: res,
@@ -57,7 +57,8 @@ class UserService extends Service {
           msg: 'user not found',
         });
       }
-      user.destroy();
+      const res = await user.update({delete:1});
+      // user.destroy();
       ctx.status = 200;
       return Object.assign(SUCCESS, {
         data: user,
@@ -111,15 +112,15 @@ class UserService extends Service {
         });
       }
 
-      if(money){
-        money =  Number(userDB.money) + Number(money)
+      if (money) {
+        money = Number(userDB.money) + Number(money)
       }
-     
-      const res = await userDB.update({ money: money});
+
+      const res = await userDB.update({ money: money });
       ctx.status = 200;
       return Object.assign(SUCCESS, {
         data: res,
-        msg:"充值成功!"
+        msg: "充值成功!"
       });
 
     } catch (error) {
@@ -129,7 +130,7 @@ class UserService extends Service {
 
   async pay({
     money = 0
-  }){
+  }) {
     const {
       ctx,
     } = this;
@@ -143,17 +144,17 @@ class UserService extends Service {
         });
       }
 
-      
-      money = userDB.money - money 
-      if(money<0){
-        return {...ERROR,msg:"余额不足，请充值！"}
+
+      money = userDB.money - money
+      if (money < 0) {
+        return { ...ERROR, msg: "余额不足，请充值！" }
       }
-    
-      const res = await userDB.update({ money: money});
+
+      const res = await userDB.update({ money: money });
       ctx.status = 200;
       return Object.assign(SUCCESS, {
         data: res,
-        msg:"支付成功!"
+        msg: "支付成功!"
       });
 
     } catch (error) {
@@ -168,46 +169,40 @@ class UserService extends Service {
     try {
       const user = await ctx.model.User.findOne({
         where: {
-          username: username.toString()
+          username: username.toString(),
+          delete:0
         },
       });
+      
       if (!user) {
-        return Object.assign(ERROR, {
+        return {
+          ...ERROR,
           msg: 'username is error',
-        });
+        }
       }
-      if(user.authority_id!=2){
-        return Object.assign(ERROR, {
+      if (user.authority_id != 2) {
+        return {
+          ...ERROR,
           msg: '您没有管理员权限',
-        });
+        }
       }
       if (md5(password) === user.password) {
         ctx.status = 200;
         const hash = md5.hex(password)
-        // ctx.cookies.set('token', hash, {
-        //   httpOnly: false,
-        //   signed: false,
-        //   maxAge: 3600 * 1000,
-        //   path: '/',
-        // });
+
         ctx.session.user = user;
 
-        // ctx.cookies.set('user_id', user.id, {
-        //   httpOnly: false,
-        //   signed: false,
-        //   maxAge: 3600 * 1000,
-        //   path: '/',
-        // });
         return Object.assign(SUCCESS, {
           data: Object.assign(user, {
             password: '',
           }),
-        });
+        }, { token: await ctx.service.actionToken.apply(user.id) });
+
       }
+
       return Object.assign(ERROR, {
         msg: 'password is error',
       });
-
 
     } catch (error) {
       ctx.status = 500;
@@ -222,7 +217,8 @@ class UserService extends Service {
     try {
       const user = await ctx.model.User.findOne({
         where: {
-          username: username.toString()
+          username: username.toString(),
+          delete: 0
         },
       });
       if (!user) {
@@ -230,22 +226,110 @@ class UserService extends Service {
           msg: 'username is error',
         });
       }
-     
+
       if (md5(password) === user.password) {
         ctx.status = 200;
         const hash = md5.hex(password)
-        
+
         return Object.assign(SUCCESS, {
           data: Object.assign(user, {
             password: '',
           }),
-        },{token: await ctx.service.actionToken.apply(user.id) });
+        }, { token: await ctx.service.actionToken.apply(user.id) });
       }
       return Object.assign(ERROR, {
         msg: 'password is error',
-      });
+      })
+
+    } catch (error) {
+      ctx.status = 500;
+      throw (error);
+    }
+  }
+
+  async list({
+    page = 1,
+    pageSize = 10,
+    order_by = 'created_at',
+    order = 'DESC',
+  }) {
+    const {
+      ctx,
+    } = this;
+    const {
+      Op,
+    } = this.app.Sequelize;
+
+    pageSize = pageSize || 10                           //一页多少条
+    const currentPage = page || 1                  //设置当前页默认第一页
+    const skipNum = (currentPage - 1) * pageSize   //跳过数
+    let options = {
+      offset: parseInt(skipNum),
+      limit: parseInt(pageSize),
+      order: [
+        [order_by, order.toUpperCase()],
+      ],
+      where: {
+        delete:0
+      }
+    }
+
+    try {
+      const res = await ctx.model.User.findAndCountAll({
+        ...options,
+        include: [{
+          model: ctx.model.Authority,
+          attributes: ['id', 'name'],
+        }]
+      })
+      ctx.status = 200
+      return {
+        ...SUCCESS,
+        data: res,
+        pageSize: pageSize
+      }
+    } catch (error) {
+      ctx.status = 500;
+      throw (error);
+    }
+  }
 
 
+  async authoritylist({
+    page = 1,
+    pageSize = 50,
+    order_by = 'created_at',
+    order = 'DESC',
+  }) {
+    const {
+      ctx,
+    } = this;
+    const {
+      Op,
+    } = this.app.Sequelize;
+
+    pageSize = pageSize || 10                           //一页多少条
+    const currentPage = page || 1                  //设置当前页默认第一页
+    const skipNum = (currentPage - 1) * pageSize   //跳过数
+    let options = {
+      offset: parseInt(skipNum),
+      limit: parseInt(pageSize),
+      order: [
+        [order_by, order.toUpperCase()],
+      ],
+      where: {}
+    }
+
+    try {
+      const res = await ctx.model.Authority.findAndCountAll({
+        ...options
+      })
+      ctx.status = 200
+      return {
+        ...SUCCESS,
+        data: res,
+        pageSize: pageSize
+      }
     } catch (error) {
       ctx.status = 500;
       throw (error);
@@ -257,10 +341,10 @@ class UserService extends Service {
       ctx,
     } = this;
     try {
-      const user = await ctx.model.User.findById(id, {
+      let user = await ctx.model.User.findById(id, {
         include: [{
           model: ctx.model.Authority,
-          attributes: [ 'id', 'name' ],
+          attributes: ['id', 'name'],
         }],
       });
       if (!user) {
@@ -270,16 +354,20 @@ class UserService extends Service {
         });
       }
       ctx.status = 200;
-      return Object.assign(SUCCESS, {
-        data: user,
-      });
+      user = Object.assign(user, {
+        password: '',
+      })
+      return {
+        ...SUCCESS,
+        data: user
+      }
 
     } catch (error) {
       throw (500);
     }
   }
 
-  async current(){
+  async current() {
     const {
       ctx,
     } = this;
@@ -289,7 +377,7 @@ class UserService extends Service {
       const userInfo = await ctx.model.User.findById(id, {
         include: [{
           model: ctx.model.Authority,
-          attributes: [ 'id', 'name'],
+          attributes: ['id', 'name'],
         }],
       });
       if (!userInfo) {
@@ -308,14 +396,14 @@ class UserService extends Service {
     }
 
   }
-  
-  async updateLoginUser({ user }){
+
+  async updateLoginUser({ user }) {
     const {
       ctx,
     } = this;
 
     const id = ctx.state.user.data.id
-    
+
 
     try {
       const userDB = await ctx.model.User.findById(id);
@@ -326,13 +414,13 @@ class UserService extends Service {
         });
       }
 
-      if(user.password){
+      if (user.password) {
         const md5Passwd = md5(user.password)
         user = Object.assign(user, {
           password: md5Passwd,
         });
       }
-     
+
       const res = await userDB.update(user);
       ctx.status = 200;
       return Object.assign(SUCCESS, {

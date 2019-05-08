@@ -1,0 +1,5 @@
+<!--pages/noticeDetail/noticeDetail.wxml-->
+<view class="notice-detail">
+  <view class="title">{{notice.title}}</view>
+  <view class="content">{{notice.content}}</view>
+</view>

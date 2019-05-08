@@ -30,7 +30,7 @@ function WxPost(url, params = {}, callBack) {
       url: HOST + url,
       method: 'POST',
       header: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + auth
       },
       data: params,
@@ -48,7 +48,7 @@ function WxPut(url, params = {}, callBack) {
       url: HOST + url,
       method: 'PUT',
       header: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + auth
       },
       data: params,

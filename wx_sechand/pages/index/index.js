@@ -60,7 +60,7 @@ Page({
 
   getRecently: function(){
     const _this = this;
-    Api.WxGet("/api/product", { pageSize: 6 }, function (res) {
+    Api.WxGet("/api/product", { pageSize: 6, state: 0  }, function (res) {
       if (res.code === 0) {
         console.log(res)
         let recProducts = res.data.rows;
@@ -80,7 +80,7 @@ Page({
 
   getRecommend: function () {
     const _this = this;
-    Api.WxGet("/api/product", { pageSize: 6, isRecommend:1 }, function (res) {
+    Api.WxGet("/api/product", { pageSize: 6, isRecommend:1,state:0 }, function (res) {
       if (res.code === 0) {
         console.log(res)
         let comProducts = res.data.rows;
@@ -101,7 +101,7 @@ Page({
 
   getHots: function () {
     const _this = this;
-    Api.WxGet("/api/product", { pageSize: 4, isHot: 1 }, function (res) {
+    Api.WxGet("/api/product", { pageSize: 4, isHot: 1, state: 0  }, function (res) {
       if (res.code === 0) {
         console.log(res)
         let comProducts = res.data.rows;

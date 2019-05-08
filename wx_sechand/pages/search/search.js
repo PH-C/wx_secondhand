@@ -83,7 +83,7 @@ Page({
     if (curClass){
       data.type = curClass
     }
-   
+   data.state = 0
     Api.WxGet("/api/product", data, function (res) {
       if (res.code === 0) {
         console.log(res)

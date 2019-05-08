@@ -109,6 +109,18 @@ Page({
       url: '/pages/myWallet/myWallet',
     })
   },
+
+  goSuggest: function(){
+    wx.navigateTo({
+      url: '/pages/suggest/suggest',
+    })
+  },
+
+  goSystem: function(){
+    wx.navigateTo({
+      url: '/pages/notice/notice',
+    })
+  },
   
   /**
    * 生命周期函数--监听页面加载

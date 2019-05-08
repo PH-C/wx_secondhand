@@ -1,0 +1,20 @@
+ .login-form {
+   position: absolute;
+  width: 300px;
+  height: 360px;
+  padding: 30px;
+  background: #fff;
+  top:50%;
+  left:50%;
+  margin:0;
+  margin-top:-150px;
+  margin-left:-150px;
+  border-radius: 10px;
+
+}
+ .login-form-forgot {
+  float: right;
+}
+.login-form-button {
+  width: 100%;
+}

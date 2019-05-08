@@ -1,0 +1,5 @@
+<!--pages/suggest/suggest.wxml-->
+<view class="suggest">
+  <view class="title">意见与反馈</view>
+  <view class="title">邮箱：sechand@163.com</view>
+</view>

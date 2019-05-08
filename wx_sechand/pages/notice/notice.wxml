@@ -1,0 +1,11 @@
+<!--pages/system/system.wxml-->
+<view class="notice">
+  <view wx:for="{{notice}}"
+        wx:key="{{index}}" 
+         data-id='{{item.id}}'
+        data-index='{{index}}' class="notice-item"
+        bindtap='goToDetail'
+  >
+  {{item.title}}...
+  </view>
+</view>

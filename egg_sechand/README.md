@@ -1,17 +1,15 @@
-## egg类似毒app的购物商城
+﻿## 购物商城
 
 
 ### 项目
-**项目地址**：[https://github.com/PH-C/duapp](https://github.com/PH-C/duapp)(喜欢的请点个star^_^)
 
 **运行**
 
 ``` bash
-#1
-git clone https://github.com/PH-C/duapp.git
+
 
 #2 
-cd duapp
+cd egg_sechand
 npm install
 
 #3

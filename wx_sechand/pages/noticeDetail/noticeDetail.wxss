@@ -1,0 +1,22 @@
+/* pages/noticeDetail/noticeDetail.wxss */
+.notice-detail{
+  width:100%;
+  box-sizing: border-box;
+  padding: 30rpx;
+}
+.notice-detail .title{
+  font-size: 32rpx;
+  font-weight: bold;
+  background-color: #fff;
+  padding: 10rpx 10rpx;
+  border-radius: 10rpx;
+  border-bottom:1px solid #ececec;
+
+}
+
+.notice-detail .content{
+  font-size: 28rpx;
+  background-color: #fff;
+  padding: 10rpx 10rpx;
+  border-radius: 10rpx;
+}

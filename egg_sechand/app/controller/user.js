@@ -86,6 +86,22 @@ class UserController extends Controller {
     });
   }
 
+  async list(){
+    const {
+      ctx,
+    } = this;
+    const res = await ctx.service.user.list(ctx.query);
+    ctx.body = res;
+  }
+
+  async authoritylist() {
+    const {
+      ctx,
+    } = this;
+    const res = await ctx.service.user.authoritylist(ctx.query);
+    ctx.body = res;
+  }
+
   async find() {
     const {
       ctx,

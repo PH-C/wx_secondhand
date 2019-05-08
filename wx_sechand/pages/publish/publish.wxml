@@ -21,7 +21,7 @@
       </view>
       <view class="section">
         <label>联系方式<text class="redC">*</text></label>
-        <input name="mobile" type="number" placeholder="请输入邮费" />
+        <input name="mobile" type="number" placeholder="请输入联系方式" />
       </view>
       <view class="section">
         <label>交易方式<text class="redC">*</text></label>

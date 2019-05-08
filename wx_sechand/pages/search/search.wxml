@@ -1,9 +1,10 @@
 <!--pages/search/search.wxml-->
+<view class="hot-class" >
+    <text class="{{curClass===''?'selected-item':'item'}}" data-value="" bindtap='bindClickClass'>全部</text>
+    <text wx:for="{{hotDiscussClass}}" data-value="{{item}}" class="{{curClass===item?'selected-item':'item'}}" bindtap='bindClickClass'>{{item}}</text>
+</view>
 <scroll-view scroll-y="{{true}}" class="search">
-  <view class="hot-class" bindtap='bindClickClass'>
-    <text data-value="" class="{{curClass===''?'selected-item':'item'}}">全部</text>
-    <text wx:for="{{hotDiscussClass}}" data-value="{{item}}" class="{{curClass===item?'selected-item':'item'}}">{{item}}</text>
-  </view>
+  
   <view class='search-product'>
     <icon type='search' size='16' class='search-icon'></icon>
     <input class='search-input' confirm-type="search" placeholder='闲置搜索' bindconfirm='searchProduct' value="{{searchValue}}"></input>

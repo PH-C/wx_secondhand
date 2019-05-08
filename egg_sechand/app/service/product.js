@@ -33,6 +33,7 @@ class ProductService extends Service {
     name = "",
     order_by = 'created_at',
     order = 'DESC',
+    state = 'all'
   }) {
    
     const {
@@ -50,7 +51,7 @@ class ProductService extends Service {
         [ order_by, order.toUpperCase() ],
       ],
       where: {
-        sellState:0
+       
       }
     };
     if(name){
@@ -81,6 +82,12 @@ class ProductService extends Service {
         isHot:isHot
       }
     }
+    if (state!='all'){
+      options.where = {
+        ...options.where,
+        sellState: state
+      }
+    }
 
     if (isRecommend) {
       options.where = {
@@ -93,15 +100,19 @@ class ProductService extends Service {
    
     const res = await this.ctx.model.Product.findAndCountAll({
       ...options,
-      // include:{
-      //   model: this.ctx.model.Comment,
-      //   as:"comments"
-      // }
+      include:{
+        model: this.ctx.model.User,
+        include: {
+          model: this.ctx.model.Authority,
+          attributes: ['id', 'name']
+        }
+      }
     });
-    return Object.assign(SUCCESS, {
+    return {
+      ...SUCCESS,
       data: res,
       page:currentPage,
-    });
+    }
   }
 
   async banner(){
@@ -136,7 +147,7 @@ class ProductService extends Service {
       }, ERROR);
     }
     Product.destroy();
-    return SUCCESS;
+    return {...SUCCESS};
 
   }
 

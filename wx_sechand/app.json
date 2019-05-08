@@ -9,13 +9,16 @@
     "pages/productDetail/productDetail",
     "pages/publish/publish",
     "pages/myOrder/myOrder",
-    "pages/myFavor/myFavor",
     "pages/myWallet/myWallet",
     "pages/confirmOrder/confirmOrder",
     "pages/myAddress/myAddress",
     "pages/addAddress/addAddress",
     "pages/mySell/mySell",
-    "pages/deliverProduct/deliverProduct"
+    "pages/myFavor/myFavor",
+    "pages/deliverProduct/deliverProduct",
+    "pages/notice/notice",
+    "pages/suggest/suggest",
+    "pages/noticeDetail/noticeDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -48,5 +51,6 @@
         "text": "我的"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

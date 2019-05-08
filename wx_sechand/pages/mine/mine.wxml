@@ -32,6 +32,15 @@
     <text class="row-one-box-left left">钱包充值</text>
     <text class="row-one-box-right-icon right" style="color: red;"></text>
   </view>
+   <view class="row-one-box" catchtap="goSystem">
+    <text class="row-one-box-left left">系统公告</text>
+    <text class="row-one-box-right-icon right" style="color: red;"></text>
+  </view>
+   <view class="row-one-box" catchtap="goSuggest">
+    <text class="row-one-box-left left">意见与反馈</text>
+    <text class="row-one-box-right-icon right" style="color: red;"></text>
+  </view>
+
 
   <view class="modal" wx:if="{{modalState}}">
     <view wx:if="{{canIUse}}" class="modal-content">

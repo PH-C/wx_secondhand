@@ -1,0 +1,14 @@
+/* pages/system/system.wxss */
+.notice{
+  width:100%;
+  box-sizing: border-box;
+  padding: 30rpx;
+}
+.notice .notice-item{
+  height: 40rpx;
+  line-height: 40rpx;
+  background-color: #fff;
+  padding: 10rpx 10rpx;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+}

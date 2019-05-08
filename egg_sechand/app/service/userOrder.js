@@ -49,8 +49,8 @@ class UserOrderService extends Service {
   }
 
   async index({
-    page = "",
-    pageSize = "",
+    page = 1,
+    pageSize = 10,
     state = '',
     order_by = 'created_at',
     order = 'DESC',
@@ -67,7 +67,7 @@ class UserOrderService extends Service {
         [ order_by, order.toUpperCase() ],
       ],
       where: {}
-    };
+    }
 
     if(page && pageSize){
       pageSize = pageSize || 10                           //一页多少条
@@ -101,6 +101,10 @@ class UserOrderService extends Service {
         model: this.ctx.model.User,
         as: 'user',
         attributes: [ 'id', 'username','avatarUrl','mobile' ],
+        include: [{
+          model: this.ctx.model.Authority,
+          attributes: ['id', 'name']
+        }]
       },{
         model: this.ctx.model.Product,
         as: 'product',
@@ -109,6 +113,10 @@ class UserOrderService extends Service {
           model: this.ctx.model.User,
           as: 'user',
           attributes: [ 'id', 'username','avatarUrl','mobile' ],
+          include: [{
+            model: this.ctx.model.Authority,
+            attributes: ['id', 'name']
+          }]
         }],
       }],
     }));

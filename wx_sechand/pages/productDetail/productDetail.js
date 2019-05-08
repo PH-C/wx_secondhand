@@ -9,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    id:"",
     product:{},
     showBox:false,
     type:"留言",
@@ -33,14 +34,18 @@ Page({
    */
   onLoad: function (options) {
     const _this = this;
+    this.setData({
+      id: options.id
+    })
     this.initData();
    
   },
 
-  initData: function(){
+  initData: function(options){
     const _this = this;
+    const {id} = this.data;
     let url = "";
-    url = app.globalData.hasLogin ? `/api/users/product/${options.id}` : `/api/product/${options.id}`;
+    url = app.globalData.hasLogin ? `/api/users/product/${id}` : `/api/product/${id}`;
     Api.WxGet(url, {}, function (res) {
       if (res.code === 0) {
         console.log(res)
@@ -166,8 +171,11 @@ Page({
         wx.showToast({
           title: '留言成功！',
         })
+        _this.setData({
+          commentValue : ""
+        })
         _this.initData()
-        _this.commentValue = ""
+        
       }else {
         wx.showToast({
           title: res.msg,
@@ -188,8 +196,11 @@ Page({
         wx.showToast({
           title: '回复成功！',
         })
+        _this.setData({
+          commentValue: ""
+        })
         _this.initData()
-        _this.commentValue = ""
+       
       } else {
         wx.showToast({
           title: res.msg,
