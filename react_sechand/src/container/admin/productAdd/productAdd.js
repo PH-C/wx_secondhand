@@ -348,7 +348,7 @@ class ProductAdd extends React.Component {
 
                 <div className="clearfix">
                   <Upload
-                    action="${Api.HOST}/api/upload"
+                    action={`${Api.HOST}/api/upload`}
                     listType="picture-card"
                     fileList={fileList}
                     onPreview={this.handlePreview}
