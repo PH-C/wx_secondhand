@@ -12,7 +12,7 @@
 - sequelize
 # 项目node后端运行方法
 
--``` bash
+``` bash
 #1
 git clone https://github.com/PH-C/wx_secondhand.git
 
@@ -26,9 +26,10 @@ mysql的账号密码改为自己的
 
 #4
 npm run dev
+```
 # 项目react后台管理系统运行方法
 
--``` bash
+``` bash
 #1
 git clone https://github.com/PH-C/wx_secondhand.git
 
@@ -38,6 +39,13 @@ npm install
 
 #3
 npm run start
+```
+#### 参考文档
+[Egg官方文档](eggjs.org/zh-cn/intro/)
+
+[Sequelize(英文)](http://docs.sequelizejs.com/manual/installation/getting-started.html)
+
+[Sequelize(中文)](https://github.com/demopark/sequelize-docs-Zh-CN)
 
 ![enter image description here](https://github.com/PH-C/wx_secondhand/blob/master/prtsc/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190814002508.png)
 ![enter image description here](https://github.com/PH-C/wx_secondhand/blob/master/prtsc/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20190814003140.png)
